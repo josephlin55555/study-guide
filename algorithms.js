@@ -1,10 +1,10 @@
 'use strict';
 
 // Radix Sort
-let radixSort = (array, maximumValue = Math.max.apply(null, array)) => {
+const radixSort = (array, maximumValue = Math.max.apply(null, array)) => {
     // Alternate default param: maximumValue = Math.max(...array)
 
-    let result = [],
+    const result = [],
         valuesToIndices = [];
 
     for (let i = 0; i <= maximumValue; i++)
@@ -23,11 +23,11 @@ let radixSort = (array, maximumValue = Math.max.apply(null, array)) => {
 };
 
 // Quicksort
-let quickSort = array => {
+const quickSort = array => {
     if (array.length <= 1)
         return array;
 
-    let pivotValue = array[0],
+    const pivotValue = array[0],
         leftArray = [],
         rightArray = [];
 
@@ -43,19 +43,19 @@ let quickSort = array => {
 };
 
 // Merge Sort
-let mergeSort = array => {
+const mergeSort = array => {
     if (array.length <= 1)
         return array;
 
-    let middleIndex = Math.floor(array.length / 2),
+    const middleIndex = Math.floor(array.length / 2),
         leftArray = array.slice(0, middleIndex),
         rightArray = array.slice(middleIndex);
 
     return mergeArrays(mergeSort(leftArray), mergeSort(rightArray));
 };
 
-let mergeArrays = (leftArray, rightArray) => {
-    let result = [];
+const mergeArrays = (leftArray, rightArray) => {
+    const result = [];
 
     while (leftArray.length && rightArray.length) {
         if (leftArray[0] < rightArray[0]) {
@@ -69,8 +69,8 @@ let mergeArrays = (leftArray, rightArray) => {
 };
 
 // Bubble Sort
-let bubbleSort = array => {
-    let oneMoreLoop = true;
+const bubbleSort = array => {
+    const oneMoreLoop = true;
 
     while (oneMoreLoop) {
         oneMoreLoop = false;
@@ -79,7 +79,7 @@ let bubbleSort = array => {
             if (array[i - 1] > array[i]) {
                 oneMoreLoop = true;
 
-                let temporaryValue = array[i - 1];
+                const temporaryValue = array[i - 1];
                 array[i - 1] = array[i];
                 array[i] = temporaryValue;
             }
@@ -90,10 +90,10 @@ let bubbleSort = array => {
 };
 
 // Binary Search
-let binarySearch = (array, value) => {
-    let lowIndex = 0,
-        middleIndex,
+const binarySearch = (array, value) => {
+    const lowIndex = 0,
         highIndex = array.length - 1;
+    let middleIndex;
 
     while (lowIndex <= highIndex) {
         middleIndex = Math.floor((lowIndex + highIndex) / 2);
@@ -111,17 +111,17 @@ let binarySearch = (array, value) => {
 };
 
 // Normal Search
-let normalSearch = (array, value) => {
-    let index = array.indexOf(value);
+const normalSearch = (array, value) => {
+    const index = array.indexOf(value);
     return index !== -1 ? index : null;
 };
 
 // Permutations With Repetition
-let permutationsWithRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
+const permutationsWithRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
     if (stringAccumulator.length === outputLength)
         return [stringAccumulator];
 
-    let result = [];
+    const result = [];
 
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
@@ -133,11 +133,11 @@ let permutationsWithRepetition = (stringInput, outputLength = stringInput.length
 };
 
 // Permutations Without Repetition
-let permutationsWithoutRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
+const permutationsWithoutRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
     if (stringAccumulator.length === outputLength)
         return [stringAccumulator];
 
-    let result = [];
+    const result = [];
 
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
@@ -149,11 +149,11 @@ let permutationsWithoutRepetition = (stringInput, outputLength = stringInput.len
 };
 
 // Combinations With Repetition
-let combinationsWithRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
+const combinationsWithRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
     if (stringAccumulator.length === outputLength)
         return [stringAccumulator];
 
-    let result = [];
+    const result = [];
 
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
@@ -165,11 +165,11 @@ let combinationsWithRepetition = (stringInput, outputLength = stringInput.length
 };
 
 // Combinations Without Repetition
-let combinationsWithoutRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
+const combinationsWithoutRepetition = (stringInput, outputLength = stringInput.length, stringAccumulator = '') => {
     if (stringAccumulator.length === outputLength)
         return [stringAccumulator];
 
-    let result = [];
+    const result = [];
 
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
