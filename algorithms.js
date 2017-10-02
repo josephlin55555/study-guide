@@ -10,13 +10,10 @@ const radixSort = (array, maximumValue = Math.max.apply(null, array)) => {
     for (let i = 0; i <= maximumValue; i++)
         valuesToIndices.push(0);
 
-    array.forEach(number => {
-        valuesToIndices[number]++;
-    });
-
-    valuesToIndices.forEach((count, number) => {
+    array.forEach(integer => ++valuesToIndices[integer]);
+    valuesToIndices.forEach((count, integer) => {
         while (count--)
-            result.push(number);
+            result.push(integer);
     });
 
     return result;
@@ -70,6 +67,7 @@ const mergeArrays = (leftArray, rightArray) => {
 
 // Bubble Sort
 const bubbleSort = array => {
+    array = array.slice();
     const oneMoreLoop = true;
 
     while (oneMoreLoop) {
@@ -91,12 +89,13 @@ const bubbleSort = array => {
 
 // Binary Search
 const binarySearch = (array, value) => {
-    const lowIndex = 0,
+    let lowIndex = 0,
+        middleIndex,
         highIndex = array.length - 1;
-    let middleIndex;
 
     while (lowIndex <= highIndex) {
         middleIndex = Math.floor((lowIndex + highIndex) / 2);
+        // or Math.floor(lowIndex + (highIndex - lowIndex) / 2)
 
         if (array[middleIndex] > value) {
             highIndex = middleIndex - 1;
