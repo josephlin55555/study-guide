@@ -179,7 +179,21 @@ const combinationsWithoutRepetition = (stringInput, outputLength = stringInput.l
     return result;
 };
 
+const randomGenerator = (minimumInteger, maximumInteger) => Math.floor(Math.random() * (maximumInteger - minimumInteger + 1) + minimumInteger);
+const swap = (collection, firstIndex, secondIndex) => {
+    const temporaryValue = collection[firstIndex];
+    collection[firstIndex] = collection[secondIndex];
+    collection[secondIndex] = temporaryValue;
+}
 
+const fisherYatesShuffle = collection => {
+    return collection
+        .map((element, index, collection) => {
+            const randomIndex = randomGenerator(index, collection.length - 1);
+            swap(collection, index, randomIndex);
+            return collection[index];
+        });
+};
 
 
 
