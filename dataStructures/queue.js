@@ -22,7 +22,7 @@ class Queue {
     }
 
     peek() {
-        return this.storage[this.frontIndex];
+        return this.storage[this.frontIndex] || null;
     }
 
     isEmpty() {

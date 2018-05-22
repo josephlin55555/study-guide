@@ -5,15 +5,16 @@ class Stack {
     }
 
     push(value) {
-        this.size++;
         this.storage[this.size] = value;
+        this.size++;
     }
 
     pop() {
-        const value = this.storage[this.size] || null;
+        const index = this.size - 1;
+        const value = this.storage[index] || null;
 
         if (this.size > 0) {
-            delete this.storage[this.size];
+            delete this.storage[index];
             this.size--;
         }
 
@@ -21,7 +22,7 @@ class Stack {
     }
 
     peek() {
-        return this.storage[this.size];
+        return this.storage[this.size] || null;
     }
 
     isEmpty() {
