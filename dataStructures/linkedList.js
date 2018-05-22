@@ -81,6 +81,76 @@ class SinglyLinkedList {
 
 class doubleLinkedList {
     constructor() {
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+    }
 
+    add(value) {
+        const newNode = new Node(value);
+
+        if (this.length > 0) {
+            newNode.previous = this.tail;
+            this.tail.next = newNode;
+            this.tail = newNode;
+        } else {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+
+        this.length++;
+        return newNode;
+    }
+
+    search(index) {
+        let current = this.head,
+            count = 0;
+
+        if (index >= this.length || index < 0) {
+            return null;
+        }
+
+        while (count < index) {
+            current = current.next;
+            count++;
+        }
+
+        return current;
+    }
+
+    remove(index) {
+        let current = this.head,
+            count = 0,
+            previous = null;
+
+        if (index >= this.length || index < 0) {
+            return null;
+        } else if (index === 0) {
+            this.head = this.head.next;
+            if (!this.head) {
+                this.tail = null;
+            } else {
+                this.head.previous = null;
+            }
+        } else if (index === this.length - 1) {
+            current = this.tail;
+            this.tail = current.previous;
+            this.tail.next = null;
+        } else {
+            while (count < index) {
+                current = current.next;
+                count++;
+            }
+
+            // current node is skipped over
+            current.previous.next = current.next;
+        }
+
+        this.length--;
+        // return back value that was removed
+        return current.value;
     }
 }
+
+
+
