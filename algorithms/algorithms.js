@@ -50,8 +50,7 @@ const permutationsWithRepetition = (stringInput, outputLength = stringInput.leng
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
         result = result.concat(permutationsWithRepetition(stringInput, outputLength, stringAccumulator));
-        stringAccumulator = stringAccumulator.slice(0, -1);
-        // Can also be stringAccumulator = stringAccumulator.slice(0, stringAccumulator.length - 1);
+        stringAccumulator = stringAccumulator.slice(0, stringAccumulator.length - 1);
     });
 
     return result;
@@ -67,7 +66,7 @@ const permutationsWithoutRepetition = (stringInput, outputLength = stringInput.l
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
         result = result.concat(permutationsWithoutRepetition(stringInput.slice(0, index) + stringInput.slice(index + 1), outputLength, stringAccumulator));
-        stringAccumulator = stringAccumulator.slice(0, -1);
+        stringAccumulator = stringAccumulator.slice(0, stringAccumulator.length - 1);
     });
 
     return result;
@@ -83,7 +82,7 @@ const combinationsWithRepetition = (stringInput, outputLength = stringInput.leng
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
         result = result.concat(combinationsWithRepetition(stringInput.slice(index), outputLength, stringAccumulator));
-        stringAccumulator = stringAccumulator.slice(0, -1);
+        stringAccumulator = stringAccumulator.slice(0, stringAccumulator.length - 1);
     });
 
     return result;
@@ -99,7 +98,7 @@ const combinationsWithoutRepetition = (stringInput, outputLength = stringInput.l
     Array.prototype.forEach.call(stringInput, (character, index) => {
         stringAccumulator += character;
         result = result.concat(combinationsWithoutRepetition(stringInput.slice(index + 1), outputLength, stringAccumulator));
-        stringAccumulator = stringAccumulator.slice(0, -1);
+        stringAccumulator = stringAccumulator.slice(0, stringAccumulator.length - 1);
     });
 
     return result;
