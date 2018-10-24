@@ -104,7 +104,7 @@ const combinationsWithoutRepetition = (stringInput, outputLength = stringInput.l
     return result;
 };
 
-const bubbleSearch = array => {
+const bubbleSort = array => {
     let oneMoreLoop = true;
 
     while (oneMoreLoop) {
