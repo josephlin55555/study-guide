@@ -189,3 +189,10 @@ const quickSort = array => {
     return quickSort(leftArray).concat(pivotValue, quickSort(rightArray));
 };
 
+const curry = callback => {
+    return function currify() {
+        return arguments.length >= callback.length
+            ? callback.apply(null, arguments)
+            : currify.bind(null, ...arguments);
+    }
+}
